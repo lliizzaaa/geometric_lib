@@ -8,11 +8,7 @@
 - Circle: P = 2πR
 - Rectangle: P = 2a + 2b
 - Square: P = 4a
-- # Math formulas
-## Area
-- Circle: S = πR²
-- Rectangle: S = ab
-- Square: S = a²
+
 
 # Circle.py
  1.import math: 
@@ -76,7 +72,3 @@
 • calc(fig, func, size): В конце концов, функция calc вызывается с проверенными пользовательскими данными для выполнения вычисления и вывода результата.
 
 
-## Perimeter
-- Circle: P = 2πR
-- Rectangle: P = 2a + 2b
-- Square: P = 4a
