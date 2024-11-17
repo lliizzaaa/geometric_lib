@@ -16,8 +16,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      FULL_NAME: "Ваше ФИО"
-      GROUP_NUMBER: "Ваш номер группы"
+      FULL_NAME: "Ахматова Елизавета Алексеевна"
+      GROUP_NUMBER: "М3114"
 
     steps:
       - name: Checkout code
