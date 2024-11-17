@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219e3a75-2c53-4f85-bb11-5f36038948cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/calculate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_calculate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_circle.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_square.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_triangle.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/triangle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/circle.py" beforeDir="false" afterPath="$PROJECT_DIR$/circle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/square.py" afterDir="false" />
-    </list>
+    <list default="true" id="219e3a75-2c53-4f85-bb11-5f36038948cf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
