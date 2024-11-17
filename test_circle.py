@@ -1,46 +1,76 @@
 import unittest
 import math
-from shapes.circle import area, perimeter
+from circle import area, perimeter  # Импортируем функции из модуля circle
 
 
-class TestCircleArea(unittest.TestCase):
-    """Тесты для функции area."""
+class TestCircleFunctions(unittest.TestCase):
+    """Тесты для функций вычисления площади и периметра круга."""
 
     def test_area_positive(self):
-        """Проверяет площадь для положительных значений радиуса (Arrange-Act-Assert)."""
-        r = 3  # Arrange
-        expected = math.pi * r * r  # Arrange
-        result = area(r)  # Act
-        self.assertAlmostEqual(result, expected, places=5)  # Assert
+        """Тест функции area для положительных значений радиуса."""
+        # Arrange
+        radius = 3
+        expected_area = math.pi * radius**2
+
+        # Act
+        result = area(radius)
+
+        # Assert
+        self.assertAlmostEqual(result, expected_area, places=5)
 
     def test_area_zero(self):
-        """Проверяет площадь для радиуса, равного 0."""
-        self.assertEqual(area(0), 0)
+        """Тест функции area для радиуса равного нулю."""
+        # Arrange
+        radius = 0
+        expected_area = 0
+
+        # Act
+        result = area(radius)
+
+        # Assert
+        self.assertEqual(result, expected_area)
 
     def test_area_negative(self):
-        """Проверяет, что функция вызывает исключение при отрицательном радиусе."""
+        """Тест функции area для отрицательных значений радиуса."""
+        # Arrange
+        radius = -3
+
+        # Act & Assert
         with self.assertRaises(ValueError):
-            area(-3)
-
-
-class TestCirclePerimeter(unittest.TestCase):
-    """Тесты для функции perimeter."""
+            area(radius)
 
     def test_perimeter_positive(self):
-        """Проверяет периметр для положительных значений радиуса."""
-        r = 3  # Arrange
-        expected = 2 * math.pi * r  # Arrange
-        result = perimeter(r)  # Act
-        self.assertAlmostEqual(result, expected, places=5)  # Assert
+        """Тест функции perimeter для положительных значений радиуса."""
+        # Arrange
+        radius = 5
+        expected_perimeter = 2 * math.pi * radius
+
+        # Act
+        result = perimeter(radius)
+
+        # Assert
+        self.assertAlmostEqual(result, expected_perimeter, places=5)
 
     def test_perimeter_zero(self):
-        """Проверяет периметр для радиуса, равного 0."""
-        self.assertEqual(perimeter(0), 0)
+        """Тест функции perimeter для радиуса равного нулю."""
+        # Arrange
+        radius = 0
+        expected_perimeter = 0
+
+        # Act
+        result = perimeter(radius)
+
+        # Assert
+        self.assertEqual(result, expected_perimeter)
 
     def test_perimeter_negative(self):
-        """Проверяет, что функция вызывает исключение при отрицательном радиусе."""
+        """Тест функции perimeter для отрицательных значений радиуса."""
+        # Arrange
+        radius = -5
+
+        # Act & Assert
         with self.assertRaises(ValueError):
-            perimeter(-3)
+            perimeter(radius)
 
 
 if __name__ == "__main__":
