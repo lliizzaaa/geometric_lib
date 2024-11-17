@@ -1,0 +1,61 @@
+name: Python Tests and Linting
+
+on:
+  push:
+    branches:
+      - master
+      - release/*
+  pull_request:
+    branches:
+      - master
+      - release/*
+      - develop
+
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+
+    env:
+      FULL_NAME: "Ахматова Елизавета Алексеевна"
+      GROUP_NUMBER: "М3114"            
+
+    steps:
+      # Шаг 1: Клонирование репозитория
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Шаг 2: Вывод информации
+      - name: Print user information
+        run: |
+          echo "Full Name: ${{ env.FULL_NAME }}"
+          echo "Group Number: ${{ env.GROUP_NUMBER }}"
+          echo "GitHub Username: ${{ github.actor }}"
+
+      # Шаг 3: Установка Python 3.13
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      # Шаг 4: Установка зависимостей из requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Шаг 5: Запуск юнит-тестов
+      - name: Run unit tests
+        run: |
+          python -m unittest discover -s tests
+
+      # Шаг 6: Проверка стиля с flake8
+      - name: Lint code with flake8
+        run: |
+          pip install flake8
+          flake8 src/ tests/
+
+      # Опционально: Автоматическое форматирование кода
+      - name: Format code with black
+        run: |
+          pip install black
+          black src/ tests/
