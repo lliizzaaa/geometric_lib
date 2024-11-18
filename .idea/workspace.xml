@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219e3a75-2c53-4f85-bb11-5f36038948cf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/tests/test_calculate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_circle.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_square.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_triangle.py" beforeDir="false" />
+    <list default="true" id="e6c963c7-242b-4ac1-85d3-b1912507650e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_triangle.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_triangle.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,24 +17,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2myQQHiR0RE62T3DMSI4XzVgO2V" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2p29bj8JabpaBYwVrye1YPmuVgS" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feat/tests",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+    "git-widget-placeholder": "feat/tests"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -48,11 +43,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="219e3a75-2c53-4f85-bb11-5f36038948cf" name="Changes" comment="" />
-      <created>1728046319801</created>
+      <changelist id="e6c963c7-242b-4ac1-85d3-b1912507650e" name="Changes" comment="" />
+      <created>1731953379464</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1728046319801</updated>
+      <updated>1731953379464</updated>
     </task>
     <servers />
   </component>

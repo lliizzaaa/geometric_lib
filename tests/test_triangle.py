@@ -6,7 +6,7 @@ class TestTriangleFunctions(unittest.TestCase):
     """Тесты для функций вычисления площади и периметра треугольника."""
 
     def test_area_positive(self):
-        """Тест функции area для положительных значений сторон треугольника."""
+        """Тест функции area для корректного треугольника с положительными сторонами."""
         # Arrange
         a, b, c = 3, 4, 5
         expected_area = 6.0
@@ -18,7 +18,7 @@ class TestTriangleFunctions(unittest.TestCase):
         self.assertAlmostEqual(result, expected_area, places=5)
 
     def test_area_invalid_triangle(self):
-        """Тест на некорректный треугольник."""
+        """Тест функции area для некорректного треугольника."""
         # Arrange
         a, b, c = 1, 2, 5  # Не выполняется неравенство треугольника
 
@@ -27,7 +27,7 @@ class TestTriangleFunctions(unittest.TestCase):
             area(a, b, c)
 
     def test_area_zero(self):
-        """Тест функции area для сторон, равных нулю."""
+        """Тест функции area для треугольника со сторонами, равными нулю."""
         # Arrange
         a, b, c = 0, 0, 0
 
@@ -36,7 +36,7 @@ class TestTriangleFunctions(unittest.TestCase):
             area(a, b, c)
 
     def test_area_negative(self):
-        """Тест функции area для отрицательных значений сторон."""
+        """Тест функции area для треугольника с отрицательной стороной."""
         # Arrange
         a, b, c = -3, 4, 5
 
@@ -45,7 +45,7 @@ class TestTriangleFunctions(unittest.TestCase):
             area(a, b, c)
 
     def test_perimeter_positive(self):
-        """Тест функции perimeter для положительных значений сторон треугольника."""
+        """Тест функции perimeter для корректного треугольника с положительными сторонами."""
         # Arrange
         a, b, c = 3, 4, 5
         expected_perimeter = 12
@@ -56,20 +56,26 @@ class TestTriangleFunctions(unittest.TestCase):
         # Assert
         self.assertEqual(result, expected_perimeter)
 
+    def test_perimeter_invalid_triangle(self):
+        """Тест функции perimeter для некорректного треугольника."""
+        # Arrange
+        a, b, c = 1, 2, 5
+
+        # Act & Assert
+        with self.assertRaises(ValueError):
+            perimeter(a, b, c)
+
     def test_perimeter_zero(self):
-        """Тест функции perimeter для сторон, равных нулю."""
+        """Тест функции perimeter для треугольника со сторонами, равными нулю."""
         # Arrange
         a, b, c = 0, 0, 0
-        expected_perimeter = 0
 
-        # Act
-        result = perimeter(a, b, c)
-
-        # Assert
-        self.assertEqual(result, expected_perimeter)
+        # Act & Assert
+        with self.assertRaises(ValueError):
+            perimeter(a, b, c)
 
     def test_perimeter_negative(self):
-        """Тест функции perimeter для отрицательных значений сторон."""
+        """Тест функции perimeter для треугольника с отрицательной стороной."""
         # Arrange
         a, b, c = -3, 4, 5
 
