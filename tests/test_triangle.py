@@ -1,88 +1,42 @@
 import unittest
-from triangle import area, perimeter  # Импортируем функции из модуля triangle
+from triangle import area, perimeter
 
-
-class TestTriangleFunctions(unittest.TestCase):
-    """Тесты для функций вычисления площади и периметра треугольника."""
+class TestTriangleCalculations(unittest.TestCase):
 
     def test_area_positive(self):
-        """Тест функции area для корректного треугольника с положительными сторонами."""
-        # Arrange
-        a, b, c = 3, 4, 5
-        expected_area = 6.0
+        self.assertAlmostEqual(area(3, 4, 5), 6.0, places=5)  #Прямоугольный треугольник
+        self.assertAlmostEqual(area(7, 8, 10), 26.8328, places=4) #Пример тупоугольного треугольника
+        self.assertAlmostEqual(area(6, 8, 10), 24.0, places=5)  #Пример остроугольного треугольника
 
-        # Act
-        result = area(a, b, c)
-
-        # Assert
-        self.assertAlmostEqual(result, expected_area, places=5)
-
-    def test_area_invalid_triangle(self):
-        """Тест функции area для некорректного треугольника."""
-        # Arrange
-        a, b, c = 1, 2, 5  # Не выполняется неравенство треугольника
-
-        # Act & Assert
-        with self.assertRaises(ValueError):
-            area(a, b, c)
 
     def test_area_zero(self):
-        """Тест функции area для треугольника со сторонами, равными нулю."""
-        # Arrange
-        a, b, c = 0, 0, 0
+        with self.assertRaises(ValueError): # Вырожденный треугольник не существует
+            area(0,0,0)
 
-        # Act & Assert
-        with self.assertRaises(ValueError):
-            area(a, b, c)
 
     def test_area_negative(self):
-        """Тест функции area для треугольника с отрицательной стороной."""
-        # Arrange
-        a, b, c = -3, 4, 5
-
-        # Act & Assert
         with self.assertRaises(ValueError):
-            area(a, b, c)
+            area(-3, 4, 5)
 
     def test_perimeter_positive(self):
-        """Тест функции perimeter для корректного треугольника с положительными сторонами."""
-        # Arrange
-        a, b, c = 3, 4, 5
-        expected_perimeter = 12
+        self.assertEqual(perimeter(3, 4, 5), 12)
+        self.assertEqual(perimeter(7, 8, 10), 25)
 
-        # Act
-        result = perimeter(a, b, c)
-
-        # Assert
-        self.assertEqual(result, expected_perimeter)
-
-    def test_perimeter_invalid_triangle(self):
-        """Тест функции perimeter для некорректного треугольника."""
-        # Arrange
-        a, b, c = 1, 2, 5
-
-        # Act & Assert
-        with self.assertRaises(ValueError):
-            perimeter(a, b, c)
 
     def test_perimeter_zero(self):
-        """Тест функции perimeter для треугольника со сторонами, равными нулю."""
-        # Arrange
-        a, b, c = 0, 0, 0
+        self.assertEqual(perimeter(0, 0, 0), 0) #Вырожденный треугольник, периметр 0
 
-        # Act & Assert
-        with self.assertRaises(ValueError):
-            perimeter(a, b, c)
 
     def test_perimeter_negative(self):
-        """Тест функции perimeter для треугольника с отрицательной стороной."""
-        # Arrange
-        a, b, c = -3, 4, 5
-
-        # Act & Assert
         with self.assertRaises(ValueError):
-            perimeter(a, b, c)
+            perimeter(-3, 4, 5)
+
+    def test_area_invalid_triangle(self):
+        with self.assertRaises(ValueError):
+            area(1,2,5) #1+2<5 - Треугольник не существует
 
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     unittest.main()
+

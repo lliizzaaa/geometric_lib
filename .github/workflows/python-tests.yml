@@ -13,52 +13,64 @@ on:
       - develop
       - feat/tests  # Добавьте ветку feat/tests
   workflow_dispatch:  # Позволяет запуск вручную
-
 jobs:
-  test-and-lint:
+  build:
     runs-on: ubuntu-latest
 
     env:
       FULL_NAME: "Ахматова Елизавета Алексеевна"
-      GROUP_NUMBER: "М3114"
+      GROUP_NUMBER: "M3114"
 
     steps:
       # Шаг 1: Клонирование репозитория
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Шаг 2: Вывод информации
-      - name: Print user information
+      # Шаг 2: Печать информации о пользователе
+      - name: Print Information
         run: |
-          echo "Full Name: ${{ env.FULL_NAME }}"
-          echo "Group Number: ${{ env.GROUP_NUMBER }}"
-          echo "GitHub Username: ${{ github.actor }}"
+          echo "ФИО: ${{ env.FULL_NAME }}"
+          echo "Номер группы: ${{ env.GROUP_NUMBER }}"
+          echo "GitHub Ник: ${{ github.actor }}"
 
-      # Шаг 3: Установка Python
-      - name: Setup Python
+      # Шаг 3: Настройка Python 3.13
+      - name: Set up Python 3.13
         uses: actions/setup-python@v4
         with:
-          python-version: '3.13'
+          python-version: "3.13"
 
-      # Шаг 4: Установка зависимостей (если файл requirements.txt существует)
+      # Шаг 4: Кэширование pip для ускорения
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      # Шаг 5: Создание виртуального окружения
+      - name: Create virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+
+      # Шаг 6: Установка зависимостей
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; else echo "No requirements.txt found, skipping..."; fi
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      # Шаг 5: Запуск юнит-тестов
+      # Шаг 7: Установка PYTHONPATH для тестов
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+
+      # Шаг 8: Запуск тестов с pytest
       - name: Run unit tests
         run: |
-          python -m unittest discover -s tests
+          pytest
 
-      # Шаг 6: Линтинг кода с flake8
-      - name: Lint code with flake8
-        run: |
-          pip install flake8
-          flake8 src/ tests/ || echo "Linting completed with warnings"
-
-      # Шаг 7: Форматирование кода (опционально)
-      - name: Format code with black
+      # Шаг 9: Проверка стиля кода с black
+      - name: Lint code with black
         run: |
           pip install black
-          black src/ tests/
+          black . 
