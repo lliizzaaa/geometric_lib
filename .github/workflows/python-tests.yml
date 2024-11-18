@@ -10,6 +10,8 @@ on:
       - master
       - release/*
       - develop
+  workflow_dispatch:  # Позволяет запуск вручную
+
 
 jobs:
   test-and-lint:
