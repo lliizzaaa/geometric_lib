@@ -3,24 +3,14 @@ name: CI Workflow
 on:
   push:
     branches:
-<<<<<<< HEAD
       - main
       - release
-=======
-      - master
-      - release/*
-      - feat/tests
->>>>>>> 2bc34d6842c4e492f3f7bb927b0608f7e005c5fa
   pull_request:
     branches:
       - main
       - release
       - develop
-<<<<<<< HEAD
 
-=======
-      - feat/tests
->>>>>>> 2bc34d6842c4e492f3f7bb927b0608f7e005c5fa
   workflow_dispatch:
 
 jobs:
@@ -34,15 +24,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-
         uses: actions/checkout@v3
 
-<<<<<<< HEAD
       - name: Print Information
-=======
-      # Шаг 2: Печать информации о пользователе
-      - name: Print user information
->>>>>>> 2bc34d6842c4e492f3f7bb927b0608f7e005c5fa
         run: |
           echo "ФИО: $FIO"
           echo "Номер группы: $GROUP_NUMBER"
@@ -70,25 +54,16 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-<<<<<<< HEAD
           pip install -r requirements.txt
-=======
-          pip install pytest  # Убедимся, что pytest установлен
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
->>>>>>> 2bc34d6842c4e492f3f7bb927b0608f7e005c5fa
 
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
       - name: Run pytest
         run: |
-          pytest || exit 1  # Убедимся, что pytest останавливает воркфлоу при ошибках
+          pytest
 
       - name: Run black
         run: |
           pip install black
-<<<<<<< HEAD
           black .
-=======
-          black . --check || echo "Некорректный стиль кода"
->>>>>>> 2bc34d6842c4e492f3f7bb927b0608f7e005c5fa
