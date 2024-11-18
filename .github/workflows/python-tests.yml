@@ -1,15 +1,16 @@
 name: Python Tests and Linting
-
 on:
   push:
     branches:
       - master
       - release/*
+      - feat/tests  # Убедитесь, что здесь есть ветка feat/tests
   pull_request:
     branches:
       - master
       - release/*
       - develop
+      - feat/tests  # Добавьте ветку feat/tests
   workflow_dispatch:  # Позволяет запуск вручную
 
 
