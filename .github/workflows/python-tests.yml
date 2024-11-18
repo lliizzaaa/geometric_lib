@@ -5,14 +5,15 @@ on:
     branches:
       - master
       - release/*
-      - feat/tests  # Убедитесь, что здесь есть ветка feat/tests
+      - feat/tests
   pull_request:
     branches:
       - master
       - release/*
       - develop
-      - feat/tests  # Добавьте ветку feat/tests
-  workflow_dispatch:  # Позволяет запуск вручную
+      - feat/tests
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,7 +28,7 @@ jobs:
         uses: actions/checkout@v3
 
       # Шаг 2: Печать информации о пользователе
-      - name: Print Information
+      - name: Print user information
         run: |
           echo "ФИО: ${{ env.FULL_NAME }}"
           echo "Номер группы: ${{ env.GROUP_NUMBER }}"
@@ -58,6 +59,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install pytest  # Убедимся, что pytest установлен
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       # Шаг 7: Установка PYTHONPATH для тестов
@@ -67,10 +69,10 @@ jobs:
       # Шаг 8: Запуск тестов с pytest
       - name: Run unit tests
         run: |
-          pytest
+          pytest || exit 1  # Убедимся, что pytest останавливает воркфлоу при ошибках
 
       # Шаг 9: Проверка стиля кода с black
       - name: Lint code with black
         run: |
           pip install black
-          black . 
+          black . --check || echo "Некорректный стиль кода"
