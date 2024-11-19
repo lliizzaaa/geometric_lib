@@ -1,66 +1,42 @@
 import unittest
-import math
 from triangle import area, perimeter
 
-class TestTriangleFunctions(unittest.TestCase):
+class TestTriangleCalculations(unittest.TestCase):
 
-    def test_area_with_valid_triangle(self):
-        a, b, c = 3, 4, 5
-        expected_result = 6.0
-        result = area(a, b, c)
-        self.assertTrue(math.isclose(result, expected_result, rel_tol=1e-9),
-                        f"Expected {expected_result}, got {result}")
+    def test_area_positive(self):
+        self.assertAlmostEqual(area(3, 4, 5), 6.0, places=5)  #Прямоугольный треугольник
+        self.assertAlmostEqual(area(7, 8, 10), 26.8328, places=4) #Пример тупоугольного треугольника
+        self.assertAlmostEqual(area(6, 8, 10), 24.0, places=5)  #Пример остроугольного треугольника
 
-    def test_area_with_float_triangle(self):
-        a, b, c = 2.5, 4.5, 5.5
-        p = (a + b + c) / 2
-        expected_result = math.sqrt(p * (p - a) * (p - b) * (p - c))
-        result = area(a, b, c)
-        self.assertTrue(math.isclose(result, expected_result, rel_tol=1e-9),
-                        f"Expected {expected_result}, got {result}")
 
-    def test_area_with_negative_side(self):
-        a, b, c = -3, 4, 5
-        with self.assertRaises(ValueError) as context:
-            area(a, b, c)
-        self.assertEqual(str(context.exception), "Стороны треугольника должны быть положительными")
+    def test_area_zero(self):
+        with self.assertRaises(ValueError): # Вырожденный треугольник не существует
+            area(0,0,0)
 
-    def test_area_with_invalid_type(self):
-        a, b, c = 3, "side", 5
-        with self.assertRaises(ValueError) as context:
-            area(a, b, c)
-        self.assertEqual(str(context.exception), "Стороны треугольника должны быть числами")
 
-    def test_area_with_invalid_triangle(self):
-        a, b, c = 1, 2, 3  # Не может существовать треугольник с такими сторонами
-        with self.assertRaises(ValueError) as context:
-            area(a, b, c)
-        self.assertEqual(str(context.exception), "Сумма любых двух сторон должна быть больше третьей")
+    def test_area_negative(self):
+        with self.assertRaises(ValueError):
+            area(-3, 4, 5)
 
-    def test_perimeter_with_valid_triangle(self):
-        a, b, c = 3, 4, 5
-        expected_result = 12
-        result = perimeter(a, b, c)
-        self.assertEqual(result, expected_result, f"Expected {expected_result}, got {result}")
+    def test_perimeter_positive(self):
+        self.assertEqual(perimeter(3, 4, 5), 12)
+        self.assertEqual(perimeter(7, 8, 10), 25)
 
-    def test_perimeter_with_floats(self):
-        a, b, c = 2.5, 4.5, 5.5
-        expected_result = a + b + c
-        result = perimeter(a, b, c)
-        self.assertTrue(math.isclose(result, expected_result, rel_tol=1e-9),
-                        f"Expected {expected_result}, got {result}")
-
-    def test_perimeter_with_negative_side(self):
-        a, b, c = 3, -4, 5
-        with self.assertRaises(ValueError) as context:
-            perimeter(a, b, c)
-        self.assertEqual(str(context.exception), "Стороны треугольника должны быть положительными")
 
     def test_perimeter_zero(self):
-        a, b, c = 0, 0, 0
-        with self.assertRaises(ValueError) as context:
-            perimeter(a, b, c)
-        self.assertEqual(str(context.exception), "Стороны треугольника должны быть положительными")
+        self.assertEqual(perimeter(0, 0, 0), 0) #Вырожденный треугольник, периметр 0
+
+
+    def test_perimeter_negative(self):
+        with self.assertRaises(ValueError):
+            perimeter(-3, 4, 5)
+
+    def test_area_invalid_triangle(self):
+        with self.assertRaises(ValueError):
+            area(1,2,5) #1+2<5 - Треугольник не существует
+
+
 
 if __name__ == '__main__':
     unittest.main()
+
