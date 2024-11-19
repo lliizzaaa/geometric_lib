@@ -59,9 +59,9 @@ jobs:
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
-      - name: Run pytest
+      - name: Run unittest
         run: |
-          pytest
+          python -m unittest discover -s tests -p "*.py"
 
       - name: Run black
         run: |
