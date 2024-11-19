@@ -5,7 +5,7 @@ class TestTriangleCalculations(unittest.TestCase):
 
     def test_area_positive(self):
         self.assertAlmostEqual(area(3, 4, 5), 6.0, places=5)  #Прямоугольный треугольник
-        self.assertAlmostEqual(area(7, 8, 10), 26.8328, places=4) #Пример тупоугольного треугольника
+        self.assertAlmostEqual(area(7, 8, 10), 27.810744326608734, places=4) #Пример тупоугольного треугольника
         self.assertAlmostEqual(area(6, 8, 10), 24.0, places=5)  #Пример остроугольного треугольника
 
 
