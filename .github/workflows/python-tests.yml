@@ -61,7 +61,7 @@ jobs:
 
       - name: Run unittest
         run: |
-          unittest
+          python -m unittest discover -s tests -p "*.py"
 
       - name: Run black
         run: |
