@@ -1,7 +1,6 @@
 import unittest
 from calculate import calc  # Импортируем изменённую функцию calc
 
-
 class TestCalc(unittest.TestCase):
     """Тесты для функции calc."""
 
